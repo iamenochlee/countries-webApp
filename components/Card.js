@@ -14,7 +14,7 @@ const Card = ({ country }) => {
       y: "0",
       scale: 1,
       transition: {
-        duration: 0.3,
+        duration: 0.25,
       },
     },
   };
@@ -34,44 +34,49 @@ const Card = ({ country }) => {
   return (
     <Link href={`/countries/${country.cca3}`}>
       <motion.a
+        href=""
         ref={cardNode}
+        className="dark:focus-visible:outline-gray-500 focus:outline-gray-400 focus:scale-105 rounded"
         initial="hidden"
         animate={controls}
         variants={cardVariants}
-        whileHover={{ scale: 1.05 }}
-        className="w-72 hover:drop-shadow-lg cursor-pointer bg-skin-accent text-skin-text md:w-full mx-auto md:pb-0 focus:scale-105 dark:focus-visible:outline-gray-500 focus:outline-none focus:shadow-lg border-red-600 focus-visible:outline-gray-300 focus:outline-offset-0 lg:pb-6 rounded-md pb-8 shadow-md overflow-hidden mb-9 md:mb-0 block">
-        <div>
-          <Image
-            objectFit="cover"
-            width={500}
-            height={300}
-            priority
-            src={country.flags.svg}
-            alt={`Flag of ${country.name.common}`}
-          />
-          <div
-            className="py-4 px-6  mb-3 flex justify-between items-start 
+        whileHover={{ scale: 1.05 }}>
+        <a className="w-72 hover:drop-shadow-lg cursor-pointer bg-skin-accent text-skin-text md:w-full mx-auto md:pb-0 focus:scale-105 dark:focus-visible:outline-gray-500 focus:outline-none focus:shadow-lg border-red-600 focus-visible:outline-gray-300 focus:outline-offset-0 lg:pb-6 rounded-md pb-8 shadow-md overflow-hidden mb-9 md:mb-0 block">
+          <div>
+            <Image
+              objectFit="cover"
+              width={500}
+              height={300}
+              priority
+              src={country.flags.svg}
+              alt={`Flag of ${country.name.common}`}
+            />
+            <div
+              className="py-4 px-6  mb-3 flex justify-between items-start 
           ">
-            <div>
-              <h2 className="text-xl font-extrabold mb-2">
-                {country.name.common.split(0, 20)}
-              </h2>
-              <p className="text-base">
-                <small className="font-semibold text-base">Population: </small>
-                {country.population.toLocaleString("en-US")}
-              </p>
-              <p className="text-base">
-                <small className="font-semibold text-base">Region: </small>
-                {country.region}
-              </p>
+              <div className="">
+                <h2 className="text-xl font-extrabold mb-2 w-9/12 text-ellipsis overflow-hidden whitespace-nowrap">
+                  {country.name.common}
+                </h2>
+                <p className="text-base">
+                  <small className="font-semibold text-base">
+                    Population:{" "}
+                  </small>
+                  {country.population.toLocaleString("en-US")}
+                </p>
+                <p className="text-base">
+                  <small className="font-semibold text-base">Region: </small>
+                  {country.region}
+                </p>
 
-              <p className="text-base">
-                <small className="font-semibold text-base">Capital: </small>
-                {country.capital}
-              </p>
+                <p className="text-base">
+                  <small className="font-semibold text-base">Capital: </small>
+                  {country.capital}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </motion.a>
     </Link>
   );

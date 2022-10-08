@@ -31,7 +31,6 @@ export default function Home({ data }) {
           name="description"
           content="Your One stop to discover details about all Countries"
         />
-        <link rel="icon" href="/logo.svg" />
       </Head>
       <div className="md:flex justify-between align-middle lg:mb-5">
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

@@ -17,7 +17,7 @@ const Navbar = () => {
         </a>
       </Link>
       <button
-        className="flex align-middle skin-bg items-center gap-1.5 focus:border hover:border-b-2 hover:border-skin-clr focus:text-skin-text hover:pt-2 focus:outline-skin-clr focus:border-spacing-16 px-3 py-1 rounded-3xl focus:bg-skin-bg"
+        className="flex align-middle skin-bg items-center gap-1.5 focus:border hover:border-b-2 hover:border-skin-clr  focus:text-skin-text hover:pt-2 focus:outline-skin-clr focus:border-spacing-16 px-3 py-1 rounded-3xl focus:bg-gray-300 dark:bg-skin-bg"
         onClick={() => setDarkmode(!darkmode)}>
         {!darkmode ? (
           <HiOutlineMoon fontSize={15} />

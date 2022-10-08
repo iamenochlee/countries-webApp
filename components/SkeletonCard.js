@@ -10,9 +10,9 @@ export const SkeletonCard = () => {
                 <h2 className="text-xl text-gray-500 font-extrabold mb-2">
                   o o o o o
                 </h2>
-                <div className="h-3 bg-skin-skeleton w-52 rounded"></div>
-                <div className="h-3 bg-skin-skeleton w-52 rounded"></div>
-                <div className="h-3 bg-skin-skeleton w-52 rounded"></div>
+                <div className="h-3 bg-skin-skeleton w-40 2xl:w-52 rounded"></div>
+                <div className="h-3 bg-skin-skeleton w-40 2xl:w-52 rounded"></div>
+                <div className="h-3 bg-skin-skeleton w-40 2xl:w-52 rounded"></div>
               </div>
             </div>
           </div>

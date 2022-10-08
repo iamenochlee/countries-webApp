@@ -5,7 +5,7 @@ const Filter = ({ setRegion }) => {
   return (
     <>
       <select
-        className="block dark:focus-visible:outline-gray-500 bg-skin-accent text-skin-text outline-none  cursor-pointer py-3 pl-1 mb-9 w-48 text-sm md:py-0 shadow  rounded-sm border-none focus:outline-1 focus:outline-gray-300"
+        className="block dark:focus-visible:outline-gray-400 bg-skin-accent text-skin-text outline-none  cursor-pointer py-3 pl-1 mb-9 w-48 text-sm md:py-0 shadow  rounded-sm border-none focus:outline-1 focus:outline-gray-500"
         id="regions"
         onChange={(e) => setRegion(e.target.value)}>
         <option value="" defaultValue hidden>
