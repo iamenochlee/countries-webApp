@@ -1,15 +1,22 @@
 //basics
 
 import React from "react";
+import { useRouter } from "next/router";
 
 //utils
 
 import Image from "next/image";
 import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
-import SkeletonCountry from "../../components/SkeletonCountry";
+import { SkeletonCountry } from "../../components/Skeleton";
 import Head from "next/head";
+
+//animation
 import { motion } from "framer-motion";
+import {
+  dataVariants,
+  imgVariants,
+} from "../../components/helpers/AnimationVariants";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`https://restcountries.com/v3.1/all/`);
@@ -37,7 +44,6 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       country: Object.assign(...data),
-      // countries,
     },
   };
 };
@@ -58,10 +64,11 @@ const Country = ({ country }) => {
     }, 1000);
   }, [country]);
 
+  const router = useRouter();
   return (
     <>
       <Head>
-        <title>{`Countries App | ${country.name.common}`}</title>
+        <title>{`Countries | ${country.name.common}`}</title>
         <meta
           name="description"
           content={`Learn About ${country.name.common}, her population, ${
@@ -70,19 +77,26 @@ const Country = ({ country }) => {
         />
       </Head>
       <main className="lg:pb-64">
-        <Link href="/">
-          <motion.a
-            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-            className="inline-flex cursor-pointer outline-none focus:outline-skin-clr focus:bg-skin-accent justify-between text-skin-text lg:mt-6 bg-skin-accent items-center gap-2 hover:drop-shadow-md border-none md:mb-20 mb-12 shadow px-7  py-1 ">
-            <BiArrowBack className="text-skin-text" aria-hidden="true" />
-            Back
-          </motion.a>
-        </Link>
+        <motion.button
+          onClick={() => router.back()}
+          whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+          className="inline-flex cursor-pointer outline-none
+          focus-visible:outline-skin-clr focus-visible:bg-skin-accent justify-between
+          text-skin-text lg:mt-6 bg-skin-accent items-center gap-2
+          hover:drop-shadow-md border-none md:mb-20 mb-12 shadow px-7 py-1 ">
+          <BiArrowBack className="text-skin-text" aria-hidden="true" />
+          Back
+        </motion.button>
         {loading ? (
           <SkeletonCountry />
         ) : (
           <div className="w-full flex flex-col md:flex-row gap-4 justify-between lg:justify-between lg:gap-36 m  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
-            <div className="my-3 md:my-0 relative cursor-pointer ">
+            <motion.div
+              variants={imgVariants}
+              animate="visible"
+              initial="hidden"
+              key={router.query.code}
+              className="my-3 md:my-0 relative cursor-pointer  ">
               <Image
                 objectFit="cover"
                 width={515}
@@ -90,9 +104,9 @@ const Country = ({ country }) => {
                 src={country.flags.svg}
                 alt={`Flag of ${country.name.common}`}
               />
-              <div className="absolute w-full h-full opacity-0 hover:opacity-90 flex items-end justify-end bg-gradient-to-r from-gray-50 to-gray-300 top-0  dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-900">
+              <div className="absolute w-full h-full opacity-0 transition-all duration-1000 hover:opacity-90 flex items-end justify-end bg-gradient-to-r from-gray-50 to-gray-300 top-0  dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-900">
                 <Link href={country.maps.googleMaps}>
-                  <a className="xl:text-2xl  flex   text-black dark:text-gray-400 font-extrabold border-4 border-black dark:border-gray-500 border-ehite px-2 py-2 absolute ">
+                  <a className="xl:text-xl  flex  text-black dark:text-gray-400 font-extrabold border-4 border-black dark:border-gray-500 border-ehite px-2 py-2 absolute ">
                     <div>
                       <Image
                         src="/location.svg"
@@ -106,8 +120,14 @@ const Country = ({ country }) => {
                   </a>
                 </Link>
               </div>
-            </div>
-            <div className="flex text-skin-text flex-col gap-3 ">
+            </motion.div>
+            <motion.div
+              variants={dataVariants}
+              initial="hidden"
+              animate="visible"
+              key={router.asPath}
+              // key={router.query.code}
+              className="flex text-skin-text flex-col gap-3 ">
               <h2 className="text-xl font-extrabold lg:text-3xl lg:mb-5">
                 {country.name.common}
               </h2>
@@ -124,9 +144,7 @@ const Country = ({ country }) => {
                         {country.name.nativeName[code].common}
                       </li>
                     )}
-                    <li
-                      className="text-sm  text-gray-800 dark:text-gray-200
-]">
+                    <li className="text-sm  text-gray-800 dark:text-gray-200">
                       <small className=" text-skin-text text-sm font-semibold ">
                         Population:{" "}
                       </small>
@@ -207,7 +225,7 @@ const Country = ({ country }) => {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         )}
       </main>
@@ -215,6 +233,6 @@ const Country = ({ country }) => {
   );
 };
 
-export default Country;
+export default React.memo(Country);
 
 Country.displayNsme = "Country";

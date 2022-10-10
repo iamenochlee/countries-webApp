@@ -3,6 +3,7 @@ import React from "react";
 
 //utils
 import Head from "next/head";
+import { MotionConfig } from "framer-motion";
 //components
 import Search from "../components/Search";
 import Filter from "../components/Filter";
@@ -11,9 +12,7 @@ import Countries from "../components/Countries";
 export default function Home({ data }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [region, setRegion] = React.useState("");
-
-  let countriesData = data;
-  const [country, _setCountries] = React.useState(countriesData);
+  let country = data;
 
   const filterCountries = country.filter((country) =>
     searchTerm
@@ -26,19 +25,21 @@ export default function Home({ data }) {
   return (
     <>
       <Head>
-        <title>Countries App</title>
+        <title>Countries</title>
         <meta
           name="description"
-          content="Your One stop to discover details about all Countries"
+          content="Your one stop to discover details about all Countries"
         />
       </Head>
-      <div className="md:flex justify-between align-middle lg:mb-5">
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <Filter setRegion={setRegion} />
-      </div>
-      <main>
-        <Countries countries={filterCountries} />
-      </main>
+      <MotionConfig reducedMotion="user">
+        <div className="md:flex justify-between align-middle lg:mb-5">
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <Filter setRegion={setRegion} />
+        </div>
+        <main>
+          <Countries countries={filterCountries} />
+        </main>
+      </MotionConfig>
     </>
   );
 }

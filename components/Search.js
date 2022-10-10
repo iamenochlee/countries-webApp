@@ -6,9 +6,12 @@ import { HiSearch } from "react-icons/hi";
 
 const Search = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div className="flex w-full bg-skin-accent items-center gap-4 shadow-md cursor-pointer py-4 pl-6 md:w-96 pr-2 mb-9 md:mb-9">
-      <HiSearch className="text-skin-text" fontSize={20} />
+    <div
+      id="search"
+      className="flex w-full lg:w-5/12 overflow-hidden bg-skin-accent items-center gap-4 shadow-md cursor-pointer py-4 pl-8 md:w-96 pr-2 mb-9 md:mb-9 xl:mb-7">
+      <HiSearch className="text-skin-text" aria-hidden="true" fontSize={20} />
       <input
+        aria-label="Search a country"
         className="focus:outline-none w-full focus:placeholder-gray-300 bg-skin-accent placeholder-skin-accent text-skin-input"
         type="text"
         placeholder="Search for a country..."

@@ -11,8 +11,9 @@ const Filter = ({ setRegion }) => {
         <option value="" defaultValue hidden>
           Filter by Region
         </option>
+        <option value="">&nbsp; All</option>
         {["Africa", "America", "Asia", "Europe", "Oceania"].map((option, i) => (
-          <option key={i} value={option}>
+          <option key={option + i} value={option}>
             &nbsp; {option}
           </option>
         ))}

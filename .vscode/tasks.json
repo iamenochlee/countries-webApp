@@ -11,15 +11,6 @@
         "reveal": "always",
         "panel": "new"
       }
-    },
-    {
-      "label": "🚀 serve",
-      "type": "shell",
-      "command": "pnpm run build && pnpm start",
-      "presentation": {
-        "reveal": "always",
-        "panel": "new"
-      }
     }
   ]
 }

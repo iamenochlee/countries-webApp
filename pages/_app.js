@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel="icon" href="/logo.svg" />
-        <meta name="author" content="iamenochlee" />
+        <meta name="author" content="@iamenochlee" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <Layout>
