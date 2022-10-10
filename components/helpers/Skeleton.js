@@ -1,7 +1,7 @@
 export const SkeletonCard = () => {
   return (
     <>
-      <div className="w-80 mx-auto sm:w-full mt-7 animate-pulse justify-center space-x-1 rounded-md border mb-10  sm:mb-0 pb-6 ">
+      <div className="w-72 mx-auto sm:w-full mt-7 animate-pulse justify-center space-x-1 rounded-md border mb-10  sm:mb-0 pb-6 ">
         <div className="w-full">
           <div className="w-full h-48 bg-skin-skeleton"></div>
           <div>

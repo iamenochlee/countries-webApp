@@ -5,7 +5,7 @@ import React from "react";
 import Card from "./Card";
 
 //utils
-import { SkeletonCard } from "./Skeleton";
+import { SkeletonCard } from "./helpers/Skeleton";
 import { FaArrowUp } from "react-icons/fa";
 
 //animation
