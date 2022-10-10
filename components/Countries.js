@@ -39,7 +39,7 @@ const Countries = ({ countries }) => {
           animate="visible"
           initial="hidden"
           type="button"
-          className={`bg-gray-300 ${
+          className={`bg-gray-300 dark:bg-gray-600 ${
             !show ? "invisible" : "visible"
           } rounded-full fixed right-5 bottom-6 p-2 z-50 drop-shadow-xl cursor-pointer hover:scale-110 hover:text-5xl`}>
           <FaArrowUp onClick={scrollToTop} aria-hidden="true" fontSize={28} />
