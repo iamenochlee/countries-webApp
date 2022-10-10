@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
-import { SkeletonCountry } from "../../components/Skeleton";
+import { SkeletonCountry } from "../../components/helpers/Skeleton";
 import Head from "next/head";
 
 //animation
