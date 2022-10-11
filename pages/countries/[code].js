@@ -10,8 +10,6 @@ import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
 import { SkeletonCountry } from "../../components/helpers/Skeleton";
 import Head from "next/head";
-import Tooltip from "@material-ui/core/Tooltip";
-
 //animation
 import { motion } from "framer-motion";
 import { useAnimationVariants } from "../../components/helpers/useAnimationVariants";
@@ -95,38 +93,33 @@ const Country = ({ country }) => {
         {loading ? (
           <SkeletonCountry />
         ) : (
-          <div className="w-full flex flex-col md:flex-row gap-4 justify-between lg:justify-between lg:gap-36 m  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
-            <Tooltip
-              title="View on Google Maps"
-              placement="right"
-              describeChild
-              arrow>
-              <motion.a
-                href={country.maps.googleMaps}
-                target="_blank"
-                variants={countryImageVariants}
-                animate="visible"
-                initial="hidden"
-                key={router.pathname}
-                //figure out path changes
-                className="my-3 md:my-0 focus-visible:outline-none cursor-pointer block">
-                <Image
-                  objectFit="cover"
-                  width={515}
-                  height={412}
-                  priority
-                  src={country.flags.svg}
-                  alt={`Flag of ${country.name.common}`}
-                />
-              </motion.a>
-            </Tooltip>
+          <div className="w-full flex flex-col md:flex-row gap-4 justify-between lg:justify-between lg:gap-28  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
+            <motion.a
+              href={country.maps.googleMaps}
+              target="_blank"
+              variants={countryImageVariants}
+              animate="visible"
+              initial="hidden"
+              key={router.pathname}
+              //figure out path changes
+              className="my-3 md:my-0 focus-visible:outline-none cursor-pointer block">
+              <Image
+                objectFit="cover"
+                width={515}
+                height={412}
+                priority
+                src={country.flags.svg}
+                alt={`Flag of ${country.name.common}`}
+                className="w-full"
+              />
+            </motion.a>
 
             <motion.div
               variants={countryVariants}
               initial="hidden"
               animate="visible"
               key={router.query.code}
-              className="flex text-skin-text flex-col  gap-3 ">
+              className="flex text-skin-text flex-col w-5/12 gap-3 ">
               <h2 className="text-xl font-extrabold lg:text-3xl lg:mb-5">
                 {country.name.common}
               </h2>
@@ -137,7 +130,7 @@ const Country = ({ country }) => {
                   animate="visible"
                   key={router.pathname}
                   className="flex flex-col gap-8 lg:flex-row 
-            lg:gap-16 xl:gap-48 lg:mb-9 lg:justify-between">
+            lg:gap-16 lg:mb-9 lg:justify-between">
                   <ul className="flex flex-col gap-2">
                     {country.nativeName && (
                       <li className="text-sm  text-gray-800 dark:text-gray-200">
@@ -212,7 +205,7 @@ const Country = ({ country }) => {
                 <div className="text-sm font-semibold lg:flex lg:justify-between lg:items-center md:absolute lg:static md:left-0 md:-bottom-32">
                   <p className="lg:w-48">Border Countries:</p>
                   {country.borders ? (
-                    <div className="flex mt-2 flex-wrap w-full gap-2.5 lg:gap-1 2xl:gap-3 justify-between lg:justify-start mx-auto mb-4 lg:mb-0 lg:mt-0 ">
+                    <div className="flex mt-2 flex-wrap w-full gap-2.5 lg:gap-2 2xl:gap-3  lg:justify-start mx-auto mb-4 lg:mb-0 lg:mt-0 ">
                       {country.borders.map((bor, i) => {
                         return (
                           <Link key={bor + i} href={bor}>
