@@ -165,9 +165,9 @@ const Country = ({ country }) => {
                     </li>
                   </ul>
 
-                  <ul className="flex flex-col gap-2">
+                  <ul className="flex flex-col gap-2 mt-9 sm:mt-4 md:mt-0">
                     <li className="text-sm  text-gray-800 dark:text-gray-200">
-                      <small className="text-skin-text  text-gray-800 dark:text-gray-200 font-semibold text-sm">
+                      <small className="text-skin-text  font-semibold text-sm">
                         Top Level Domain:
                       </small>
                       {` ${country.tld}`}

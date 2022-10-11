@@ -107,6 +107,9 @@ header {
   position: fixed;
   transition: transform 0.6s;
 }
+.scroll-up header{
+  box-shadow: none
+}
 
 .scroll-down header {
   transform: translate3d(0, -110%, 0) !important;
