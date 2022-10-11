@@ -118,7 +118,7 @@ const Country = ({ country }) => {
               initial="hidden"
               animate="visible"
               key={router.query.code}
-              className="flex text-skin-text flex-col w-5/12 gap-3 ">
+              className="flex text-skin-text flex-col sm:w-5/12 gap-3 ">
               <h2 className="text-xl font-extrabold lg:text-3xl lg:mb-5">
                 {country.name.common}
               </h2>
