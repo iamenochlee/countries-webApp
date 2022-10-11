@@ -10,13 +10,11 @@ import Link from "next/link";
 import { BiArrowBack } from "react-icons/bi";
 import { SkeletonCountry } from "../../components/helpers/Skeleton";
 import Head from "next/head";
+import Tooltip from "@material-ui/core/Tooltip";
 
 //animation
 import { motion } from "framer-motion";
-import {
-  dataVariants,
-  imgVariants,
-} from "../../components/helpers/AnimationVariants";
+import { useAnimationVariants } from "../../components/helpers/useAnimationVariants";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`https://restcountries.com/v3.1/all/`);
@@ -49,6 +47,11 @@ export const getStaticProps = async (context) => {
 };
 
 const Country = ({ country }) => {
+  //variants for animation
+  const { countryDataVariants, countryImageVariants, countryVariants } =
+    useAnimationVariants();
+
+  //code
   let code;
   if (country.languages) {
     const language = Object.keys(country?.languages);
@@ -64,7 +67,9 @@ const Country = ({ country }) => {
     }, 1000);
   }, [country]);
 
+  //router
   const router = useRouter();
+
   return (
     <>
       <Head>
@@ -76,7 +81,7 @@ const Country = ({ country }) => {
           } capital, currencies...`}
         />
       </Head>
-      <main className="lg:pb-64">
+      <div className="lg:pb-64">
         <motion.button
           onClick={() => router.back()}
           whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
@@ -91,48 +96,46 @@ const Country = ({ country }) => {
           <SkeletonCountry />
         ) : (
           <div className="w-full flex flex-col md:flex-row gap-4 justify-between lg:justify-between lg:gap-36 m  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
+            <Tooltip
+              title="View on Google Maps"
+              placement="right"
+              describeChild
+              arrow>
+              <motion.a
+                href={country.maps.googleMaps}
+                target="_blank"
+                variants={countryImageVariants}
+                animate="visible"
+                initial="hidden"
+                key={router.pathname}
+                //figure out path changes
+                className="my-3 md:my-0 focus-visible:outline-none cursor-pointer block">
+                <Image
+                  objectFit="cover"
+                  width={515}
+                  height={412}
+                  priority
+                  src={country.flags.svg}
+                  alt={`Flag of ${country.name.common}`}
+                />
+              </motion.a>
+            </Tooltip>
+
             <motion.div
-              variants={imgVariants}
-              animate="visible"
+              variants={countryVariants}
               initial="hidden"
+              animate="visible"
               key={router.query.code}
-              className="my-3 md:my-0 relative cursor-pointer  ">
-              <Image
-                objectFit="cover"
-                width={515}
-                height={412}
-                src={country.flags.svg}
-                alt={`Flag of ${country.name.common}`}
-              />
-              <div className="absolute w-full h-full opacity-0 transition-all duration-1000 hover:opacity-90 flex items-end justify-end bg-gradient-to-r from-gray-50 to-gray-300 top-0  dark:bg-gradient-to-r dark:from-gray-700 dark:to-gray-900">
-                <Link href={country.maps.googleMaps}>
-                  <a className="xl:text-xl  flex  text-black dark:text-gray-400 font-extrabold border-4 border-black dark:border-gray-500 border-ehite px-2 py-2 absolute ">
-                    <div>
-                      <Image
-                        src="/location.svg"
-                        alt="location icon"
-                        hidden={true}
-                        width={30}
-                        height={15}
-                      />
-                    </div>{" "}
-                    {country.name.common.toUpperCase()}
-                  </a>
-                </Link>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={dataVariants}
-              initial="hidden"
-              animate="visible"
-              key={router.asPath}
-              // key={router.query.code}
-              className="flex text-skin-text flex-col gap-3 ">
+              className="flex text-skin-text flex-col  gap-3 ">
               <h2 className="text-xl font-extrabold lg:text-3xl lg:mb-5">
                 {country.name.common}
               </h2>
               <div className="flex flex-col gap-8 ">
-                <div
+                <motion.div
+                  variants={countryDataVariants}
+                  initial="hidden"
+                  animate="visible"
+                  key={router.pathname}
                   className="flex flex-col gap-8 lg:flex-row 
             lg:gap-16 xl:gap-48 lg:mb-9 lg:justify-between">
                   <ul className="flex flex-col gap-2">
@@ -205,15 +208,17 @@ const Country = ({ country }) => {
                       </li>
                     )}
                   </ul>
-                </div>
-                <div className="text-sm font-semibold lg:flex lg:justify-between lg:items-center md:absolute lg:static md:left-0 md:-bottom-24">
+                </motion.div>
+                <div className="text-sm font-semibold lg:flex lg:justify-between lg:items-center md:absolute lg:static md:left-0 md:-bottom-32">
                   <p className="lg:w-48">Border Countries:</p>
                   {country.borders ? (
                     <div className="flex mt-2 flex-wrap w-full gap-2.5 lg:gap-1 2xl:gap-3 justify-between lg:justify-start mx-auto mb-4 lg:mb-0 lg:mt-0 ">
                       {country.borders.map((bor, i) => {
                         return (
                           <Link key={bor + i} href={bor}>
-                            <a className=" px-7 py-0.5 shadow mt-2 lg:mt-0  border outline-none focus:outline-skin-clr focus:bg-skin-accent bg-skin-accent items-center hover:drop-shadow-md dark:hover:bg-skin-bg border-none ">
+                            <a
+                              id="border"
+                              className=" w-16 h-6 flex items-center justify-center shadow mt-2 lg:mt-0  border outline-none focus:outline-skin-clr focus:bg-skin-accent bg-skin-accent hover:drop-shadow-md dark:hover:bg-skin-bg border-none ">
                               {bor}
                             </a>
                           </Link>
@@ -221,14 +226,16 @@ const Country = ({ country }) => {
                       })}
                     </div>
                   ) : (
-                    <p className="text-sm">No borders Country</p>
+                    <p className="text-sm font-normal mt-1">
+                      No borders Country
+                    </p>
                   )}
                 </div>
               </div>
             </motion.div>
           </div>
         )}
-      </main>
+      </div>
     </>
   );
 };

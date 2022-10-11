@@ -46,6 +46,7 @@ Anthor fun challenge from FEM, interacted and pulled data from Rest Countries AP
 - React Icons
 - React Hooks
 - React Intersection Observer
+- React Tooltip
 - Local Storage
 - Skeleton Screens
 

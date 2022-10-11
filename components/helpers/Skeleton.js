@@ -25,7 +25,7 @@ export const SkeletonCard = () => {
 export const SkeletonCountry = () => {
   return (
     <div className="w-full mt-5 flex flex-col animate-pulse md:flex-row gap-4 justify-between lg:justify-between lg:gap-36 m  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12   lg:pr-0 md:mb-0 mb-12 relative">
-      <div className="my-3 md:my-0 w-full h-64 lg:h-80 bg-skin-skeleton 2xl:h-96"></div>
+      <div className="my-3 md:my-0 w-full sm:w-10/12 md:w-full h-72 lg:h-80 bg-skin-skeleton 2xl:h-96"></div>
       <div className="flex flex-col gap-3 ml-5">
         <h2 className="lg:mb-5 text-2xl text-gray-500 font-extrabold mb-2">
           o o o o o o

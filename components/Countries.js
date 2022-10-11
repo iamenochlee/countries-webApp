@@ -9,7 +9,7 @@ import { SkeletonCard } from "./helpers/Skeleton";
 import { FaArrowUp } from "react-icons/fa";
 
 //animation
-import { scrollVariants } from "./helpers/AnimationVariants";
+import { useAnimationVariants } from "./helpers/useAnimationVariants";
 import { motion } from "framer-motion";
 
 //hooks
@@ -17,7 +17,7 @@ import { useScrollToTop } from "./hooks/useScrollToTop";
 
 const Countries = ({ countries }) => {
   const [loading, setLoading] = React.useState(true);
-
+  const { scrollVariants } = useAnimationVariants();
   //scroll to top
   const { show, scrollToTop } = useScrollToTop();
 

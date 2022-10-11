@@ -38,6 +38,11 @@ export default function Home({ data }) {
         </div>
         <main>
           <Countries countries={filterCountries} />
+          {filterCountries.length < 1 && (
+            <h2 className="text-skin-text text-base md:text-lg">
+              Oops! Not found
+            </h2>
+          )}
         </main>
       </MotionConfig>
     </>

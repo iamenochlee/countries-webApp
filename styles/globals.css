@@ -48,7 +48,7 @@
     --thumb: hsl(209 23% 50%);
     --scroll: rgba(0, 0, 0, 0.7);
     --focus: hsl(209 23% 30%);
-    --btn-focus: var(--hover);
+    --btn-focus: hsl(209 23% 70%);
   }
 
   div.space-x-1 {
@@ -92,20 +92,11 @@ img {
   }
   #theme-text {
     font-size: 1rem !important;
-    font-weight: 600 !important ;
   }
 }
 
 #search:has(input:focus) {
   outline: 1px solid var(--thumb);
-}
-
-#themeBtn:hover {
-  padding-top: 3px;
-}
-
-#themeBtn:hover svg {
-  margin-bottom: -4px;
 }
 
 button:focus {
@@ -118,5 +109,5 @@ header {
 }
 
 .scroll-down header {
-  transform: translate3d(0, -100%, 0) !important;
+  transform: translate3d(0, -110%, 0) !important;
 }

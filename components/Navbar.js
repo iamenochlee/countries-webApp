@@ -18,18 +18,22 @@ const Navbar = () => {
       </Link>
       <button
         id="themeBtn"
-        className="flex focus:transition-all duration-500  align-middle mb-1 skin-bg items-center gap-1.5 focus:border hover:border-b-2 hover:border-skin-clr  focus:text-skin-text hover:pt-2 focus:outline-skin-clr focus:border-spacing-16 px-3 py-1 rounded-3xl focus:bg-gray-300 dark:bg-skin-bg"
+        className="flex align-middle mb-1 skin-bg items-center gap-1.5 focus:border focus:text-skin-text focus:outline-skin-clr focus:border-spacing-1 px-3 py-1 rounded-3xl focus:bg-gray-300 dark:bg-skin-bg border-b-2 border-transparent hover:border-skin-clr pt-2"
         onClick={() => {
           setDarkmode(!darkmode);
         }}>
         {!darkmode ? (
-          <HiOutlineMoon aria-label="darkmode" fontSize={15} />
+          <HiOutlineMoon aria-label="darkmode" className="mb-1" fontSize={15} />
         ) : (
-          <HiOutlineSun aria-label="light theme" fontSize={15} />
+          <HiOutlineSun
+            aria-label="light theme"
+            className="mb-1"
+            fontSize={15}
+          />
         )}
         <p
           id="theme-text"
-          className="text-sm hidden sm:block font-extrabold tracking-wide mt-1">
+          className="text-sm hidden sm:block font-semibold mb-0.5 tracking-wide">
           {!darkmode ? "Dark Mode" : "LightTheme"}
         </p>
       </button>
@@ -40,3 +44,4 @@ const Navbar = () => {
 export default Navbar;
 
 Navbar.displayName = "Navbar";
+// over:border-b-2 hover:border-skin-clr  hover:pt-2

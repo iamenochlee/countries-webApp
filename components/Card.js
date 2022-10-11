@@ -6,14 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 //animation
-import { cardVariants } from "./helpers/AnimationVariants";
+import { useAnimationVariants } from "./helpers/useAnimationVariants";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const Card = ({ country }) => {
   const controls = useAnimation();
   const { ref: cardNode, inView } = useInView();
-
+  const { cardVariants } = useAnimationVariants();
   React.useEffect(() => {
     if (inView) {
       controls.start("visible");
