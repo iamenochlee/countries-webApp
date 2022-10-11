@@ -8,7 +8,7 @@ export const useAnimationVariants = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 1.1,
+        duration: 0.6,
       },
     },
   };
@@ -35,7 +35,7 @@ export const useAnimationVariants = () => {
   };
 
   const cardVariants = {
-    hidden: { y: isBigScreen ? "35px" : "5px" },
+    hidden: { y: isBigScreen ? "35px" : "4px" },
     visible: {
       y: "0",
       transition: {

@@ -93,20 +93,19 @@ const Country = ({ country }) => {
         {loading ? (
           <SkeletonCountry />
         ) : (
-          <div className="w-full flex flex-col md:flex-row gap-4 justify-between lg:justify-between lg:gap-28  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
+          <div className="w-full flex flex-col md:flex-row justify-between lg:justify-between lg:gap-28  md:w-full lg:items-center md:gap-20 md:items-center mx-auto md:pr-12 lg:pr-0 md:mb-0 mb-12 relative">
             <motion.a
               href={country.maps.googleMaps}
               target="_blank"
               variants={countryImageVariants}
               animate="visible"
               initial="hidden"
-              key={router.pathname}
-              //figure out path changes
-              className="my-3 md:my-0 focus-visible:outline-none cursor-pointer block">
+              key={router.query.code}
+              className="my-3 md:my-0 focus-visible:outline-none cursor-default block mb-8 sm:mb-0">
               <Image
-                objectFit="cover"
-                width={515}
-                height={412}
+                objectFit="fill"
+                width={570}
+                height={405}
                 priority
                 src={country.flags.svg}
                 alt={`Flag of ${country.name.common}`}
@@ -129,7 +128,7 @@ const Country = ({ country }) => {
                   initial="hidden"
                   animate="visible"
                   key={router.pathname}
-                  className="flex flex-col gap-8 lg:flex-row 
+                  className="flex flex-col lg:flex-row 
             lg:gap-16 lg:mb-9 lg:justify-between">
                   <ul className="flex flex-col gap-2">
                     {country.nativeName && (
@@ -205,7 +204,7 @@ const Country = ({ country }) => {
                 <div className="text-sm font-semibold lg:flex lg:justify-between lg:items-center md:absolute lg:static md:left-0 md:-bottom-32">
                   <p className="lg:w-48">Border Countries:</p>
                   {country.borders ? (
-                    <div className="flex mt-2 flex-wrap w-full gap-2.5 lg:gap-2 2xl:gap-3  lg:justify-start mx-auto mb-4 lg:mb-0 lg:mt-0 ">
+                    <div className="flex mt-2 flex-wrap w-full gap-2.5  xl:gap-3  lg:justify-start mx-auto mb-4 lg:mb-0 lg:mt-0 ">
                       {country.borders.map((bor, i) => {
                         return (
                           <Link key={bor + i} href={bor}>

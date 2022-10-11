@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 export default function Custom404() {
   const isBigScreen = useMediaQuery({ minWidth: 900 });
   return (
-    <div className="flex items-center flex-col lg:pt-9 lg:-ml-28 lg:gap-24 justify-center lg:flex-row">
+    <div className="flex items-center flex-col lg:pt-9 xl:pt-20 lg:-ml-28 lg:gap-24 justify-center lg:flex-row">
       <Image
         alt="page not found"
         src="/404.svg"
@@ -13,7 +13,7 @@ export default function Custom404() {
         width={400}
         height={isBigScreen ? 570 : 400}
         objectFit="cover"
-        hidden="true"
+        hidden={true}
       />
       <div className="flex dark:text-white font-mono flex-col lg:items-start items-center justify-center gap-4">
         <div className="flex  items-center justify-center text-sm font-semibold gap-2">
