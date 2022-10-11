@@ -100,7 +100,7 @@ const Country = ({ country }) => {
               variants={countryImageVariants}
               animate="visible"
               initial="hidden"
-              key={router.query.code}
+              key={router.asPath}
               className="my-3 md:my-0 focus-visible:outline-none cursor-default block mb-8 sm:mb-0">
               <Image
                 objectFit="fill"
