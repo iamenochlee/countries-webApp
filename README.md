@@ -30,7 +30,7 @@ This is a solution to the [Rest Countries API challenge on Frontend Mentor](http
 
 ## My process
 
-Anthor fun challenge from FEM, interacted and pulled data from Rest Countries API. Added some more features, such as a scroll to Top button, that appears after the user scrolls above 500px, a custom 404 page, and much more.
+Another awesome challenge from FEM, interacted and pulled data from Rest Countries API. Added some more features, such as a scroll to Top button, that appears after the user scrolls above 500px, a custom 404 page, and much more.
 
 ### Built with
 
