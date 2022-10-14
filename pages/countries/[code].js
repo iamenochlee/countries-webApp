@@ -151,18 +151,22 @@ const Country = ({ country }) => {
                       </small>
                       {country.region}
                     </li>
-                    <li className="text-sm  text-gray-800 dark:text-gray-200">
-                      <small className="text-skin-text  text-sm font-semibold ">
-                        Sub Region:{" "}
-                      </small>
-                      {country.subregion}
-                    </li>
-                    <li className="text-sm  text-gray-800 dark:text-gray-200">
-                      <small className="text-skin-text text-sm font-semibold ">
-                        Capital:{" "}
-                      </small>
-                      {country.capital}
-                    </li>
+                    {country.subregion && (
+                      <li className="text-sm  text-gray-800 dark:text-gray-200">
+                        <small className="text-skin-text  text-sm font-semibold ">
+                          Sub Region:{" "}
+                        </small>
+                        {country.subregion}
+                      </li>
+                    )}
+                    {country.capital && (
+                      <li className="text-sm  text-gray-800 dark:text-gray-200">
+                        <small className="text-skin-text text-sm font-semibold ">
+                          Capital:{" "}
+                        </small>
+                        {country.capital}
+                      </li>
+                    )}
                   </ul>
 
                   <ul className="flex flex-col gap-2 mt-9 sm:mt-4 md:mt-0">

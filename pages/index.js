@@ -12,15 +12,40 @@ import Countries from "../components/Countries";
 export default function Home({ data }) {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [region, setRegion] = React.useState("");
-  let country = data;
+  let countries = data;
+  const [filteredCountries, setFilteredCountries] = React.useState(countries);
 
-  const filterCountries = country.filter((country) =>
-    searchTerm
-      ? country.name.common
-          .toLowerCase()
-          .includes(searchTerm.toLocaleLowerCase())
-      : country.region.toLowerCase().includes(region.toLocaleLowerCase())
-  );
+  React.useEffect(() => {
+    if (searchTerm === "" && region === "") {
+      setFilteredCountries(countries);
+    }
+    if (searchTerm !== "" && region === "") {
+      setFilteredCountries(
+        countries.filter((country) =>
+          country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }
+    if (searchTerm === "" && region !== "") {
+      setFilteredCountries(
+        countries.filter((country) =>
+          country.region.toLowerCase().includes(region.toLowerCase())
+        )
+      );
+    }
+    if (searchTerm !== "" && region !== "") {
+      setFilteredCountries(
+        countries.filter((country) => {
+          return (
+            country.name.common
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase()) &&
+            country.region.toLowerCase() === region.toLowerCase()
+          );
+        })
+      );
+    }
+  }, [countries, searchTerm, region]);
 
   return (
     <>
@@ -37,10 +62,10 @@ export default function Home({ data }) {
           <Filter setRegion={setRegion} />
         </div>
         <main>
-          <Countries countries={filterCountries} />
-          {filterCountries.length < 1 && (
+          <Countries countries={filteredCountries} />
+          {filteredCountries.length < 1 && (
             <h2 className="text-skin-text text-base md:text-lg">
-              Oops! Not found
+              Oops! Not found.
             </h2>
           )}
         </main>

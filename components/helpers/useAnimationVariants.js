@@ -34,16 +34,6 @@ export const useAnimationVariants = () => {
     },
   };
 
-  const cardVariants = {
-    hidden: { y: isBigScreen ? "35px" : "4px" },
-    visible: {
-      y: "0",
-      transition: {
-        duration: 0.8,
-      },
-    },
-  };
-
   const scrollVariants = {
     hidden: { y: "-8px" },
     visible: {
@@ -59,7 +49,6 @@ export const useAnimationVariants = () => {
   return {
     countryDataVariants,
     scrollVariants,
-    cardVariants,
     countryImageVariants,
     countryVariants,
   };
