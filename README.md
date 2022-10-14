@@ -45,7 +45,11 @@ Another awesome challenge from FEM, interacted and pulled data from Rest Countri
 - Framer Motion
 - React Icons
 - React Hooks
+<<<<<<< HEAD
 - React Tooltip
+=======
+- React Intersection Observer
+>>>>>>> e0f5428f007edb69c099793ded927b952524818d
 - Local Storage
 - Skeleton Screens
 
