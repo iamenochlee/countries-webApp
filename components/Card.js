@@ -52,11 +52,11 @@ const Card = ({ country }) => {
                   {country.region}
                 </p>
 
-                <p className="text-base font-thin text-gray-900 dark:text-gray-300">
+                <p className="text-base font-thin text-gray-900 dark:text-gray-300 w-9/12 text-ellipsis overflow-hidden whitespace-nowrap">
                   <small className="font-semibold text-skin-text  text-base">
                     Capital:{" "}
                   </small>
-                  {country.capital}
+                  {country.capital.join(", ")}
                 </p>
               </div>
             </div>
