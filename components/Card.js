@@ -36,7 +36,7 @@ const Card = ({ country }) => {
               className="py-4 px-6  mb-3 flex justify-between items-start 
           ">
               <div className="">
-                <h2 className="text-xl font-extrabold mb-2 w-11/12 lg:w-10/12 text-ellipsis overflow-hidden whitespace-nowrap">
+                <h2 className="text-xl font-extrabold mb-2 w-11/12 lg:w-10/12 xl:w-11/12 text-ellipsis overflow-hidden whitespace-nowrap">
                   {country.name.common.slice(0, 20)}
                 </h2>
                 <p className="text-base font-thin text-gray-900 dark:text-gray-300">
@@ -52,11 +52,13 @@ const Card = ({ country }) => {
                   {country.region}
                 </p>
 
-                <p className="text-base font-thin text-gray-900 dark:text-gray-300 w-9/12 text-ellipsis overflow-hidden whitespace-nowrap">
+                <p className="text-base font-thin text-gray-900 dark:text-gray-300 w-10/12 text-ellipsis overflow-hidden whitespace-nowrap">
                   <small className="font-semibold text-skin-text  text-base">
                     Capital:{" "}
                   </small>
-                  {country.capital.join(", ")}
+                  {typeof country.capital === "object"
+                    ? country.capital.join(", ")
+                    : country.capital}
                 </p>
               </div>
             </div>
